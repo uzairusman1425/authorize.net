@@ -86,7 +86,7 @@ function DetailsForm() {
     } else {
       try {
         let res = await fetch(
-          "https://apitest.authorize.net/xml/v1/request.api",
+          "https://api.authorize.net/xml/v1/request.api",
           {
             method: "POST",
             body: data,
