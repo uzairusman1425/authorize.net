@@ -140,7 +140,7 @@ function DetailsForm() {
             type="text"
             name="first name"
             id="fname"
-            placeholder="Enter First Name"
+            placeholder="First Name"
             detail="First Name"
             state={firstname}
             setstate={setFirstname}
@@ -149,7 +149,7 @@ function DetailsForm() {
             type="text"
             name="last name"
             id="lname"
-            placeholder="Enter Last Name"
+            placeholder="Last Name"
             detail="Last Name"
             state={lastname}
             setstate={setLastname}
@@ -159,8 +159,8 @@ function DetailsForm() {
             type="number"
             name="cardnumber"
             id="cardnumber"
-            placeholder="Enter Your Card Number"
-            detail="Card Holder Number"
+            placeholder="Card Number"
+            detail="Card Number"
             state={cardnumber}
             setstate={setCardnumber}
           />
@@ -168,7 +168,7 @@ function DetailsForm() {
             type="number"
             name="cardcode"
             id="cardcode"
-            placeholder="Enter Your Card Code"
+            placeholder="Card Code"
             detail="Card Code"
             state={cardcode}
             setstate={setCardcode}
@@ -178,7 +178,7 @@ function DetailsForm() {
             name="expiry"
             id="expiry"
             detail="Expiry Date"
-            placeholder="Enter Your Expiry Date"
+            placeholder="Card Expiry Date"
             state={expiry}
             setstate={setExpiry}
           />
@@ -187,7 +187,7 @@ function DetailsForm() {
             type="text"
             name="invoice"
             id="invoice"
-            placeholder="Enter Your Invoice Number"
+            placeholder="Invoice Number"
             detail="Invoice Number"
             state={invoiceno}
             setstate={setInvoiceno}
@@ -197,7 +197,7 @@ function DetailsForm() {
             type="number"
             name="Amount"
             id="number"
-            placeholder="Enter Your Amount"
+            placeholder="Amount"
             detail="Amount"
             state={amount}
             setstate={setAmount}
@@ -210,7 +210,7 @@ function DetailsForm() {
               id="address"
               cols="30"
               rows="10"
-              placeholder="Enter Your Address"
+              placeholder="  Address"
               className="border-2 px-2  rounded-md border-white text-white resize-none w-[400px] bg-transparent "
               value={address}
               onChange={(e) => setAddress(e.target.value)}
@@ -235,7 +235,7 @@ function DetailsForm() {
             type="text"
             name="city"
             id="city"
-            placeholder="Enter Your City"
+            placeholder="  City"
             detail="City"
             state={city}
             setstate={setCity}
@@ -245,7 +245,7 @@ function DetailsForm() {
             type="text"
             name="state"
             id="state"
-            placeholder="Enter Your State"
+            placeholder="  State"
             detail="State"
             state={state}
             setstate={setState}
@@ -254,7 +254,7 @@ function DetailsForm() {
             type="number"
             name="zipcode"
             id="zipcode"
-            placeholder="Enter Your Zip Code"
+            placeholder="  Zip Code"
             detail="Zip Code"
             state={zipcode}
             setstate={setZipcode}
@@ -264,7 +264,7 @@ function DetailsForm() {
             type="number"
             name="phone"
             id="phone"
-            placeholder="Enter Your Phone No"
+            placeholder="  Phone No"
             detail="Phone Number"
             state={phoneno}
             setstate={setPhoneno}
@@ -274,7 +274,7 @@ function DetailsForm() {
             type="text"
             name="country"
             id="country"
-            placeholder="Enter Your Country"
+            placeholder="  Country"
             detail="Country"
             state={country}
             setstate={setCountry}
