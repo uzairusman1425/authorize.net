@@ -63,7 +63,7 @@ function DetailsForm() {
         <country>${country}</country>
     </shipTo>      
 </transactionRequest>
-</createTransactionRequest>`;
+  </createTransactionRequest>`;
 
   const HandleSubmit = async (e) => {
     e.preventDefault();
@@ -85,17 +85,14 @@ function DetailsForm() {
       toast.info("All Fields Are Required");
     } else {
       try {
-        let res = await fetch(
-          "https://api.authorize.net/xml/v1/request.api",
-          {
-            method: "POST",
-            body: data,
-            headers: { "Content-Type": "application/xml" },
-          }
-        );
+        let res = await fetch("https://api.authorize.net/xml/v1/request.api", {
+          method: "POST",
+          body: data,
+          headers: { "Content-Type": "application/xml" },
+        });
 
         if (!res.ok) {
-          throw new Error("Network response was not ok");
+          toast.warn("Network response was not ok");
         }
 
         if (res.ok) {
@@ -128,19 +125,19 @@ function DetailsForm() {
     <>
       <Nnavbar />
       <section
-        className="w-full h-full flex justify-center items-center  mb-10 bg-no-repeat bg-cover"
+        className="w-full h-full flex justify-center items-center  mb-2  "
         style={{ backgroundImage: "url('/background.jpg')" }}
       >
         <form
           onSubmit={HandleSubmit}
-          className="w-[600px] h-full  bg-transparent shadow-xl border-2 mt-20 justify-center items-center gap-10 flex flex-col pb-4 "
+          className="w-[600px] h-full mt-20  bg-transparent shadow-xl bg-white border-2  justify-center items-center gap-10 flex flex-col pb-4 "
         >
-          <h1 className="text-center text-3xl text-white font-bold">DETAILS</h1>
+          <h1 className="text-center text-3xl font-bold">DETAILS</h1>
           <Input
             type="text"
             name="first name"
             id="fname"
-            placeholder="First Name"
+            placeholder="Enter First Name"
             detail="First Name"
             state={firstname}
             setstate={setFirstname}
@@ -149,7 +146,7 @@ function DetailsForm() {
             type="text"
             name="last name"
             id="lname"
-            placeholder="Last Name"
+            placeholder="Enter Last Name"
             detail="Last Name"
             state={lastname}
             setstate={setLastname}
@@ -159,8 +156,8 @@ function DetailsForm() {
             type="number"
             name="cardnumber"
             id="cardnumber"
-            placeholder="Card Number"
-            detail="Card Number"
+            placeholder="Enter Your Card Number"
+            detail="Card  Number"
             state={cardnumber}
             setstate={setCardnumber}
           />
@@ -168,7 +165,7 @@ function DetailsForm() {
             type="number"
             name="cardcode"
             id="cardcode"
-            placeholder="Card Code"
+            placeholder="Enter Your Card Code"
             detail="Card Code"
             state={cardcode}
             setstate={setCardcode}
@@ -178,7 +175,7 @@ function DetailsForm() {
             name="expiry"
             id="expiry"
             detail="Expiry Date"
-            placeholder="Card Expiry Date"
+            placeholder="Enter Your Expiry Date"
             state={expiry}
             setstate={setExpiry}
           />
@@ -187,7 +184,7 @@ function DetailsForm() {
             type="text"
             name="invoice"
             id="invoice"
-            placeholder="Invoice Number"
+            placeholder="Enter Your Invoice Number"
             detail="Invoice Number"
             state={invoiceno}
             setstate={setInvoiceno}
@@ -197,45 +194,37 @@ function DetailsForm() {
             type="number"
             name="Amount"
             id="number"
-            placeholder="Amount"
+            placeholder="Enter Your Amount"
             detail="Amount"
             state={amount}
             setstate={setAmount}
           />
 
-          <div className="input1 ml-4">
-            <p className="text-xl font-semibold text-white">Address</p>
-            <textarea
-              name="address"
-              id="address"
-              cols="30"
-              rows="10"
-              placeholder="  Address"
-              className="border-2 px-2  rounded-md border-white text-white resize-none w-[400px] bg-transparent "
-              value={address}
-              onChange={(e) => setAddress(e.target.value)}
-            ></textarea>
-          </div>
+          <Input
+            type="text"
+            name="address"
+            id="address"
+            placeholder="Enter Your Address"
+            detail="Address"
+            state={address}
+            setstate={setAddress}
+          />
 
-          <div className="input1 ml-4">
-            <p className="text-xl font-semibold text-white">Description</p>
-            <textarea
-              name="desc"
-              id="desc"
-              cols="30"
-              rows="10"
-              placeholder="Enter Description"
-              className="border-2  px-2 rounded-md border-white text-white resize-none w-[400px] bg-transparent "
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
-            ></textarea>
-          </div>
+          <Input
+            type="text"
+            name="desc"
+            id="desc"
+            placeholder="Enter  Description"
+            detail="Description"
+            state={description}
+            setstate={setDescription}
+          />
 
           <Input
             type="text"
             name="city"
             id="city"
-            placeholder="  City"
+            placeholder="Enter Your City"
             detail="City"
             state={city}
             setstate={setCity}
@@ -245,7 +234,7 @@ function DetailsForm() {
             type="text"
             name="state"
             id="state"
-            placeholder="  State"
+            placeholder="Enter Your State"
             detail="State"
             state={state}
             setstate={setState}
@@ -254,7 +243,7 @@ function DetailsForm() {
             type="number"
             name="zipcode"
             id="zipcode"
-            placeholder="  Zip Code"
+            placeholder="Enter Your Zip Code"
             detail="Zip Code"
             state={zipcode}
             setstate={setZipcode}
@@ -264,7 +253,7 @@ function DetailsForm() {
             type="number"
             name="phone"
             id="phone"
-            placeholder="  Phone No"
+            placeholder="Enter Your Phone No"
             detail="Phone Number"
             state={phoneno}
             setstate={setPhoneno}
@@ -274,7 +263,7 @@ function DetailsForm() {
             type="text"
             name="country"
             id="country"
-            placeholder="  Country"
+            placeholder="Enter Your Country"
             detail="Country"
             state={country}
             setstate={setCountry}

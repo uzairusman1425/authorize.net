@@ -11,7 +11,7 @@ function Nnavbar() {
         <button
           className="px-4 py-2 bg-green-400 text-white font-bold rounded-sm"
           onClick={() => {
-            signOut({ callbackUrl: "/" });
+            signOut();
           }}
         >
           Sign Out
