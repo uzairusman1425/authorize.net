@@ -3,7 +3,6 @@ import { useState } from "react";
 import Input from "../(components)/Input";
 import Nnavbar from "../(components)/Nnavbar";
 import { toast } from "react-toastify";
-import { parseString } from "xml2js";
 
 function DetailsForm() {
   const [firstname, setFirstname] = useState("");
@@ -20,104 +19,68 @@ function DetailsForm() {
   const [country, setCountry] = useState("");
   const [phoneno, setPhoneno] = useState("");
   const [cardcode, setCardcode] = useState("");
-  const [error, setError] = useState("");
 
-  let Transaction_Key = process.env.NEXT_PUBLIC_TRANSACTION_KEY;
-  let Api_Login = process.env.NEXT_PUBLIC_NAME;
-  let data = `<createTransactionRequest xmlns="AnetApi/xml/v1/schema/AnetApiSchema.xsd">
-<merchantAuthentication>
-    <name>${Api_Login}</name>
-    <transactionKey>${Transaction_Key}</transactionKey>
-</merchantAuthentication>
-<transactionRequest>
-  <transactionType>authCaptureTransaction</transactionType>
-    <amount>${amount}</amount>
-    <payment>
-        <creditCard>
-            <cardNumber>${cardnumber}</cardNumber>
-            <expirationDate>${expiry}</expirationDate>
-            <cardCode>${cardcode}</cardCode>
-        </creditCard>
-    </payment>
-    <order>
-        <invoiceNumber>${invoiceno}</invoiceNumber>
-        <description>${description}</description>
-    </order> 
-    <poNumber>${phoneno}</poNumber>
-    <billTo>
-        <firstName>${firstname}</firstName>
-        <lastName>${lastname}</lastName>
-        <address>${address}</address>
-        <city>${city}</city>
-        <state>${state}</state>
-        <zip>${zipcode}</zip>
-        <country>${country}</country>
-    </billTo>
-    <shipTo>
-        <firstName>${firstname}</firstName>
-        <lastName>${lastname}</lastName>
-        <address>${address}</address>
-        <city>${city}</city>
-        <state>${state}</state>
-        <zip>${zipcode}</zip>
-        <country>${country}</country>
-    </shipTo>      
-</transactionRequest>
-  </createTransactionRequest>`;
+  let data = {
+    firstname,
+    lastname,
+    cardnumber,
+    expiry,
+    invoiceno,
+    amount,
+    address,
+    description,
+    city,
+    state,
+    zipcode,
+    country,
+    cardcode,
+  };
 
-  const HandleSubmit = async (e) => {
+  const Handlesubmit = async (e) => {
     e.preventDefault();
-    if (
-      !firstname ||
-      !lastname ||
-      !cardnumber ||
-      !expiry ||
-      !invoiceno ||
-      !amount ||
-      !address ||
-      !description ||
-      !city ||
-      !state ||
-      !zipcode ||
-      !country ||
-      !phoneno
-    ) {
-      toast.info("All Fields Are Required");
-    } else {
-      try {
-        let res = await fetch("https://api.authorize.net/xml/v1/request.api", {
+    try {
+      if (
+        !firstname ||
+        !lastname ||
+        !cardnumber ||
+        !expiry ||
+        !invoiceno ||
+        !amount ||
+        !address ||
+        !description ||
+        !city ||
+        !state ||
+        !zipcode ||
+        !country ||
+        !phoneno
+      ) {
+        toast.info("All Fields Are Required");
+      } else if (cardnumber.length > 16) {
+        toast.error("Credit Card Lenght is Greater Than 16");
+      } else {
+        let res = await fetch("http://localhost:3000/api/authorize", {
           method: "POST",
-          body: data,
-          headers: { "Content-Type": "application/xml" },
+          body: JSON.stringify(data),
+          headers: { "Content-Type": "application/json" },
         });
-
-        if (!res.ok) {
-          toast.warn("Network response was not ok");
+        res = await res.json();
+        if (res.status == 200) {
+          if (res.message === undefined) {
+            toast.error("Error");
+          } else {
+            toast.success(res.message);
+          }
+        } else {
+          if (res.message === undefined) {
+            toast.error("Error");
+          } else {
+            toast.error(res.message);
+          }
         }
-
-        if (res.ok) {
-          const xmlData = await res.text();
-          console.log("XML", xmlData);
-          parseString(xmlData, (err, parsedResult) => {
-            if (err) {
-              throw new Error("Error parsing XML:", err);
-            }
-            const valid =
-              parsedResult?.createTransactionResponse.messages[0].resultCode[0];
-            console.log(valid);
-
-            if (valid == "Error") {
-              setError(valid);
-              toast.error(error);
-            } else {
-              toast.success("Order Submitted");
-            }
-          });
-        }
-      } catch (error) {
-        console.log(error);
-        toast.error("Error Entering Details");
       }
+    } catch (error) {
+      console.error(error);
+      toast.error("Error submitting order");
     }
   };
 
@@ -129,7 +92,7 @@ function DetailsForm() {
         style={{ backgroundImage: "url('/background.jpg')" }}
       >
         <form
-          onSubmit={HandleSubmit}
+          onSubmit={Handlesubmit}
           className="w-[600px] h-full mt-20  bg-transparent shadow-xl bg-white border-2  justify-center items-center gap-10 flex flex-col pb-4 "
         >
           <h1 className="text-center text-3xl font-bold">DETAILS</h1>
