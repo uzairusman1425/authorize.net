@@ -76,8 +76,25 @@ function DetailsForm() {
           } else {
             toast.error(res.message);
           }
+
+          
         }
       }
+      setAddress("")
+      setAmount("")
+      setCardcode("")
+      setCardnumber("")
+      setAmount("")
+      setCity("")
+      setCountry("")
+      setDescription("")
+      setExpiry("")
+      setFirstname("")
+      setInvoiceno("")
+      setLastname("")
+      setPhoneno("")
+      setZipcode("")
+      
     } catch (error) {
       console.error(error);
       toast.error("Error submitting order");

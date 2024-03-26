@@ -109,7 +109,8 @@ export async function POST(req) {
         const message = response?.getTransactionResponse()?.getMessages()
           ?.message[0];
         const messageText = message?.description;
-        console.log(message);
+        console.log(response.messages.message[0]);
+        
 
         error = response?.getTransactionResponse()?.getErrors()?.error[0];
         errorText = error?.errorText;
