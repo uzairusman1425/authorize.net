@@ -252,77 +252,7 @@ function DetailsForm() {
             />
           </div>
 
-          <div className="Shipping-info  w-full h-full text-center">
-            <h1 className="font-bold text-2xl border-2 bg-gray-400 border-gray-400">
-              Shipping Information
-            </h1>
-            <Input
-              type="text"
-              name="first name"
-              id="fname"
-              placeholder="Enter First Name"
-              detail="First Name"
-              state={firstname}
-              setstate={setFirstname}
-            />
-            <Input
-              type="text"
-              name="last name"
-              id="lname"
-              placeholder="Enter Last Name"
-              detail="Last Name"
-              state={lastname}
-              setstate={setLastname}
-            />
-            <Input
-              type="text"
-              name="address"
-              id="address"
-              placeholder="Enter Your Address"
-              detail="Address"
-              state={address}
-              setstate={setAddress}
-            />
-
-            <Input
-              type="text"
-              name="city"
-              id="city"
-              placeholder="Enter Your City"
-              detail="City"
-              state={city}
-              setstate={setCity}
-            />
-
-            <Input
-              type="text"
-              name="state"
-              id="state"
-              placeholder="Enter Your State"
-              detail="State"
-              state={state}
-              setstate={setState}
-            />
-            <Input
-              type="number"
-              name="zipcode"
-              id="zipcode"
-              placeholder="Enter Your Zip Code"
-              detail="Zip Code"
-              state={zipcode}
-              setstate={setZipcode}
-            />
-
-            <Input
-              type="text"
-              name="country"
-              id="country"
-              placeholder="Enter Your Country"
-              detail="Country"
-              state={country}
-              setstate={setCountry}
-            />
-          </div>
+        
 
           <button className="w-[200px] py-2 border-2 font-bold bg-green-400 text-white rounded-lg">
             Submit
