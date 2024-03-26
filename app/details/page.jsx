@@ -58,7 +58,7 @@ function DetailsForm() {
       } else if (cardnumber.length > 16) {
         toast.error("Credit Card Lenght is Greater Than 16");
       } else {
-        let res = await fetch("http://localhost:3000/api/authorize", {
+        let res = await fetch("/api/authorize", {
           method: "POST",
           body: JSON.stringify(data),
           headers: { "Content-Type": "application/json" },
